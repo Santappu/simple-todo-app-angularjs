@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang= "en" ng-app="ToDo">
+<head>
+	<meta charset="UTF-8" />
+	<title>To Do</title>
+	<link rel="stylesheet" href="css/site.css">
+	<link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'/>
+	<script>
+	
+	</script>
+</head>
+<body>		
+	<div class="container" ng-controller="todoController">
+		<h3>Tasks ({{getTotalTodo()}})</h3>
+		<form name="frm" ng-submit="addTodo()">
+			<input type="text" name="newtodo" ng-model="newTodo" placeholder="enter something.." required />
+			<button ng-disabled="frm.$invalid" class="ent">Enter</button>
+		</form>
+		<button class="clearAll" ng-click="clearCompleted()">Clear selected</button>
+		<ul>
+			<li ng-repeat="todo in todos">
+				<input type="checkbox" ng-model="todo.done" />
+				<span ng-class="{'done':todo.done}">{{todo.title}}</span>
+			</li>
+		</ul>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
